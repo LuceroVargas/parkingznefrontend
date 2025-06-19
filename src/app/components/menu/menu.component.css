@@ -1,0 +1,32 @@
+.custom-toolbar {
+  background-color: #ef1e12; 
+  color: white;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+
+/* NOMBRE DE LA APP */
+.toolbar-title {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+
+.btn-toolbar {
+  color: white;
+  font-weight: 500;
+  text-transform: none;
+  font-size: 14px;
+}
+
+.mat-menu-item mat-icon {
+  margin-right: 10px;
+  color: #ef1e12;
+}
