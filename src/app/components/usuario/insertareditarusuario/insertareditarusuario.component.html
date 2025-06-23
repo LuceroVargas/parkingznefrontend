@@ -1,0 +1,133 @@
+<div class="container">
+    <div style="text-align: center;margin: 5%;">
+        <h1>Registro de usuarios </h1>
+    </div>
+    <div style="text-align: center;">
+        <form [formGroup]="form" (submit)="aceptar()">
+            <mat-form-field *ngIf="edicion">
+                <mat-label>ID</mat-label>
+                <input matInput formControlName="codigoUsuario">
+
+                <mat-error *ngIf="form.get('codigoUsuario')?.hasError('required')">
+                    El codigo del usuario es obligatorio!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombreUsuario">
+
+                <mat-error *ngIf="form.get('nombreUsuario')?.hasError('required')">
+                    El nombre del usuario es obligatorio!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Apellidos</mat-label>
+                <input matInput formControlName="apellidosUsuario">
+
+                <mat-error *ngIf="form.get('apellidosUsuario')?.hasError('required')">
+                   Apellidos del usuario es obligatorio!!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Escoge la Fecha de tu Nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fechaNaciemientoUsuario">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.get('fechaNaciemientoUsuario')?.hasError('required')">
+                    La fecha del nacimiento del usuario es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Correo</mat-label>
+                <input matInput formControlName="correoUsuario">
+
+                <mat-error *ngIf="form.get('correoUsuario')?.hasError('required')">
+                    El correo del usuario es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Placa Auto</mat-label>
+                <input matInput formControlName="placaAutoUsuario">
+            
+                <mat-error *ngIf="form.get('placaAutoUsuario')?.hasError('required')">
+                    La placa del auto del usuario es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Latitud Usuario</mat-label>
+                <input matInput formControlName="latitudUsuario">
+            
+                <mat-error *ngIf="form.get('latitudUsuario')?.hasError('required')">
+                    La latitud del usuario es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Longitud Usuario</mat-label>
+                <input matInput formControlName="longitudUsuario">
+            
+                <mat-error *ngIf="form.get('longitudUsuario')?.hasError('required')">
+                    La longitud del usuario es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Telefono Usuario</mat-label>
+                <input matInput formControlName="telefonoUsuario">
+            
+                <mat-error *ngIf="form.get('telefonoUsuario')?.hasError('required')">
+                    El telefono del usuario es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="usernameUsuario">
+            
+                <mat-error *ngIf="form.get('usernameUsuario')?.hasError('required')">
+                    El username del usuario es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="passwordUsuario">
+            
+                <mat-error *ngIf="form.get('passwordUsuario')?.hasError('required')">
+                    El password del usuario es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="passwordUsuario">
+            
+                <mat-error *ngIf="form.get('passwordUsuario')?.hasError('required')">
+                    El password del usuario es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Enabled</mat-label>
+                <input matInput formControlName="enabledUsuario">
+            
+                <mat-error *ngIf="form.get('enabledUsuario')?.hasError('required')">
+                    El enabled del usuario es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary">Aceptar</button>
+            <button mat-raised-button color="warn" routerLink="/usuarios">
+                Cancelar
+            </button>
+
+        </form>
+    </div>
+    </div>
