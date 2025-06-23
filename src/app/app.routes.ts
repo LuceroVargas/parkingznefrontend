@@ -4,6 +4,8 @@ import { InsertareditarComponent } from './components/tiponotificacion/insertare
 import { BuscarComponent } from './components/tiponotificacion/buscar/buscar.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { InsertareditarusuarioComponent } from './components/usuario/insertareditarusuario/insertareditarusuario.component';
+import { SuscripcionComponent } from './components/suscripcion/suscripcion.component';
+import { InsertareditarsuscripcionComponent } from './components/suscripcion/insertareditarsuscripcion/insertareditarsuscripcion.component';
 
 export const routes: Routes = [
   {
@@ -32,6 +34,18 @@ export const routes: Routes = [
       },
       {
         path:'edicionesUsuario/:id',component:InsertareditarusuarioComponent
+      }
+    ]
+
+  },
+  {
+    path:'suscripciones',component:SuscripcionComponent,
+    children:[
+      {
+        path:'formularioSuscripcion',component:InsertareditarsuscripcionComponent
+      },
+      {
+        path:'edicionesSuscripcion/:id',component:InsertareditarsuscripcionComponent
       },
      
     ]

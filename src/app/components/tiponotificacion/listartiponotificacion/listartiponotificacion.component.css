@@ -1,0 +1,93 @@
+/* Fondo general */
+body {
+  background: #f0f0f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 40px auto;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Título */
+.container h1 {
+  text-align: center;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Tabla Angular Material */
+table.mat-table {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+/* Encabezado de tabla */
+.mat-header-row {
+  background-color: #c62828;
+  color: white;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+}
+
+/* Celdas */
+.mat-row {
+  background-color: #fff;
+  transition: background-color 0.2s;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.mat-cell {
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Iconos */
+button[matButton] {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button[matButton]:hover {
+  transform: scale(1.2);
+}
+
+mat-icon {
+  font-size: 20px;
+  color: #555;
+}
+
+mat-icon[ng-reflect-svg-icon="edit"] {
+  color: #1976d2;
+}
+
+mat-icon[ng-reflect-svg-icon="delete_forever"] {
+  color: #d32f2f;
+}
+
+::ng-deep .btn-delete mat-icon {
+  color: #2e7d32 !important; 
+}

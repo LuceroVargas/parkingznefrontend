@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TipoNotificacion } from '../../../models/tiponotificacion';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TiponotificacionService } from '../../../services/tiponotificacion.service';
@@ -17,7 +17,6 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     CommonModule,
     MatInputModule,
-    CommonModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
@@ -26,7 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './insertareditar.component.html',
   styleUrl: './insertareditar.component.css'
 })
-export class InsertareditarComponent {
+export class InsertareditarComponent implements OnInit {
 
   form: FormGroup = new FormGroup({})
   tiponotificacion: TipoNotificacion = new TipoNotificacion()

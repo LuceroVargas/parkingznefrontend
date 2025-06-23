@@ -44,9 +44,8 @@ export class TiponotificacionService {
   }
 
 
-  searchTypeNotification(c:number){
-    const params={codigo:c}
-    return this.http.get<TipoNotificacion[]>(`${this.url}/busquedas`,{params})
+  searchTypeNotification(id:number){
+    return this.http.get<TipoNotificacion[]>(`${this.url}/busquedas/${id}`)
   }
   
 }

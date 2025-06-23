@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { TipoNotificacion } from '../../../models/tiponotificacion';
-import { MatTableModule, MatTableDataSource } from '@angular/material/table';
-import { TiponotificacionService } from '../../../services/tiponotificacion.service';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
+import { TipoNotificacion } from '../../../models/tiponotificacion';
+import { TiponotificacionService } from '../../../services/tiponotificacion.service';
 
 @Component({
-  selector: 'app-listartipodenotificacion',
+  selector: 'app-listartiponotificacion',
   imports: [MatTableModule, CommonModule, MatButtonModule, MatIconModule, RouterModule],
-  templateUrl: './listartipodenotificacion.component.html',
-  styleUrl: './listartipodenotificacion.component.css'
+  templateUrl: './listartiponotificacion.component.html',
+  styleUrl: './listartiponotificacion.component.css'
 })
-export class ListartipodenotificacionComponent implements OnInit {
+export class ListartiponotificacionComponent implements OnInit{
+
   dataSource: MatTableDataSource<TipoNotificacion> = new MatTableDataSource()
   displayedColumns: string[] = ['c1', 'c2','c3', 'c4']
   constructor(private tpS: TiponotificacionService) { }
