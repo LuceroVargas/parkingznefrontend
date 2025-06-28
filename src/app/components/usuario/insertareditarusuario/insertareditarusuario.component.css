@@ -1,0 +1,67 @@
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 28px;
+    color: #3f51b5;
+    margin-bottom: 1.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+mat-radio-group {
+    display: flex;
+    gap: 2rem;
+    padding: 0.5rem 0;
+}
+
+button.aceptar {
+    background-color: #e11e12;
+    color: #fff;
+}
+
+button.aceptar:hover {
+    background-color: #c11010;
+}
+
+button.cancelar {
+    background-color: transparent;
+    color: #e11e12;
+    border: 1px solid #e11e12;
+}
+
+button.cancelar:hover {
+    background-color: #c11010;
+}
+button {
+    display: block;
+    width: 48%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+mat-error {
+    font-size: 13px;
+    color: #f44336;
+}

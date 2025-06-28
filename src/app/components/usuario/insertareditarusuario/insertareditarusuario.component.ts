@@ -7,12 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Usuario } from '../../../models/usuario';
-import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
-import { MatNativeDateModule } from '@angular/material/core';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 import { UsuarioService } from '../../../services/usuario.service';
-
+import {MatRadioModule} from '@angular/material/radio';
 @Component({
   selector: 'app-insertareditarusuario',
+  providers: [provideNativeDateAdapter()],
   imports: [ MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
@@ -21,7 +21,8 @@ import { UsuarioService } from '../../../services/usuario.service';
     MatNativeDateModule,
     MatSelectModule,
     MatButtonModule,
-    RouterLink],
+    RouterLink,
+    MatRadioModule],
   templateUrl: './insertareditarusuario.component.html',
   styleUrl: './insertareditarusuario.component.css'
 })
@@ -31,6 +32,7 @@ export class InsertareditarusuarioComponent implements OnInit {
   
   id: number = 0
   edicion: boolean = false
+  maxDate!: Date;
 
   constructor(private uS: UsuarioService,
     private router: Router,
@@ -43,16 +45,20 @@ export class InsertareditarusuarioComponent implements OnInit {
 
       this.id = data['id']
       this. edicion = data['id'] != null
-      //actualizar
+
       this.init()
     }
     )
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); 
+    this.maxDate = new Date(today);
+    this.maxDate.setDate(today.getDate() - 1);
 
     this.form = this.formBuilder.group({
       codigoUsuario: [''],
       nombreUsuario: ['', Validators.required],
       apellidosUsuario: ['', Validators.required],
-      fechaNacimientoUsuario: ['', Validators.required],
+      fechaNacimientoUsuario: [null, Validators.required],
       correoUsuario: ['', Validators.required],
       placaAutoUsuario: ['', Validators.required],
       latitudUsuario: ['', Validators.required],
@@ -80,15 +86,13 @@ export class InsertareditarusuarioComponent implements OnInit {
       this.usuario.enabled= this.form.value.enabledUsuario
 
       if (this.edicion) {
-        //actualizar
         this.uS.update(this.usuario).subscribe(data => {
           this.uS.list().subscribe(data => {
             this.uS.setList(data)
           })
         })
       } else {
-        //INSERTAR
-        this.uS.insert(this.usuario).subscribe(data => {
+        this.uS.insertar(this.usuario).subscribe(data => {
           this.uS.list().subscribe(data => {
             this.uS.setList(data)
           })
@@ -97,6 +101,7 @@ export class InsertareditarusuarioComponent implements OnInit {
       this.router.navigate(['usuarios'])
     }
   }
+
   init() { 
     if (this.edicion) {
       this.uS.listId(this.id).subscribe(data => {
@@ -119,6 +124,4 @@ export class InsertareditarusuarioComponent implements OnInit {
 
     }
   }
-
-
 }

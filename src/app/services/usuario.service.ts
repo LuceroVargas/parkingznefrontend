@@ -16,7 +16,7 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(this.url)
   }
 
-  insert(u: Usuario) {
+  insertar(u: Usuario) {
       return this.http.post(this.url, u)
     }
   
@@ -35,7 +35,7 @@ export class UsuarioService {
       return this.http.put(this.url, u)
     }
   
-    deleteS(id:number) {
+    eliminar(id:number) {
       return this.http.delete(`${this.url}/${id}`)
     }
   
