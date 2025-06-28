@@ -1,14 +1,56 @@
 <mat-toolbar class="custom-toolbar">
   <div>
-    <button mat-button [matMenuTriggerFor]="menuTipoNotificaciones" class="btn-rojo">
+    <button mat-button [matMenuTriggerFor]="menuTipoNotificacion" class="btn-rojo">
       <mat-icon>computer</mat-icon>
       Tipo Notificaciones
     </button>
   </div>
 
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuUsuario" class="btn-rojo">
+      <mat-icon>account_circle</mat-icon>
+      Usuario
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuSuscripcion" class="btn-rojo">
+      <mat-icon>computer</mat-icon>
+      Suscripcion
+    </button>
+  </div>
+
+<div>
+  <button mat-button [matMenuTriggerFor]="menuEmpresa" class="btn-rojo">
+    <mat-icon>business</mat-icon>
+    Empresa
+  </button>
+</div>
+
+
 </mat-toolbar>
-<mat-menu #menuTipoNotificaciones="matMenu">
+
+<mat-menu #menuTipoNotificacion="matMenu">
   <button mat-menu-item routerLink="/tiponotificaciones">Listar</button>
   <button mat-menu-item routerLink="/tiponotificaciones/formulario">Registrar</button>
   <button mat-menu-item routerLink="/tiponotificaciones/busquedasid">Buscar por id</button>
+</mat-menu>
+
+<mat-menu #menuUsuario="matMenu">
+  <button mat-menu-item routerLink="/usuarios">Listar</button>
+  <button mat-menu-item routerLink="/usuarios/formularioUsuario">Registrar</button>
+  <button mat-menu-item routerLink="/usuarios/busquedasid">Buscar por id</button>
+</mat-menu>
+
+<mat-menu #menuSuscripcion="matMenu">
+  <button mat-menu-item routerLink="/suscripciones">Listar</button>
+  <button mat-menu-item routerLink="/suscripciones/formularioSuscripcion">Registrar</button>
+  <button mat-menu-item routerLink="/suscripciones/busquedasid">Buscar por id</button>
+</mat-menu>
+
+<mat-menu #menuEmpresa="matMenu">
+  <button mat-menu-item routerLink="/empresas">Listar</button>
+  <button mat-menu-item routerLink="/empresa/listar"> Listar</button>  
+  <button mat-menu-item routerLink="/empresas/insertar"> Registrar Empresa</button>  
+   <button mat-menu-item routerLink="/empresas/busquedasempresa">Buscar por id</button>  
 </mat-menu>

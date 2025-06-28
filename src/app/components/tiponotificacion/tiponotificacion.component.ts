@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { ListartipodenotificacionComponent } from './listartipodenotificacion/listartipodenotificacion.component';
+import { ListartiponotificacionComponent } from './listartiponotificacion/listartiponotificacion.component';
 
 @Component({
   selector: 'app-tiponotificacion',
-  imports: [RouterOutlet, ListartipodenotificacionComponent],
+  imports: [RouterOutlet,ListartiponotificacionComponent],
   templateUrl: './tiponotificacion.component.html',
   styleUrl: './tiponotificacion.component.css'
 })

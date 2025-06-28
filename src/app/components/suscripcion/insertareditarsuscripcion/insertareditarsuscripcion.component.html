@@ -1,0 +1,86 @@
+<div class="container">
+  <div style="text-align: center;margin: 5%;">
+    <h1>REGISTRAR SUSCRIPCIÓN</h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Suscripción</mat-label>
+      <input matInput placeholder="Premium, Básica..." formControlName="tipoSuscripcion">
+      <mat-error *ngIf="form.get('tipoSuscripcion')?.hasError('required')">
+        El tipo de suscripción es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+      <mat-form-field class="example-full-width">
+      <mat-label>Estado</mat-label>
+      <input matInput placeholder="Activo, Inactivo..." formControlName="estadoSuscripcion">
+      <mat-error *ngIf="form.get('tipopagoSuscripcion')?.hasError('required')">
+        El estado de suscripcion es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Tipo de Pago</mat-label>
+      <input matInput placeholder="Plin, Yape..." formControlName="tipopagoSuscripcion">
+      <mat-error *ngIf="form.get('tipopagoSuscripcion')?.hasError('required')">
+        El tipo de pago es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-radio-group aria-label="Renovación Automática" formControlName="renovacionSuscripcion">
+      <mat-radio-button [value]="true">Sí</mat-radio-button>
+      <mat-radio-button [value]="false">No</mat-radio-button>
+    </mat-radio-group>
+
+    <br><br>
+
+    <mat-form-field>
+      <mat-label>Fecha Inicio</mat-label>
+      <input matInput [matDatepicker]="pickerInicio" formControlName="fechainicioSuscripcion">
+      <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+      <mat-error *ngIf="form.get('fechainicioSuscripcion')?.hasError('required')">
+        La fecha de inicio es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+      <mat-label>Fecha Fin</mat-label>
+      <input matInput [matDatepicker]="pickerFin" formControlName="fechafinSuscripcion">
+      <mat-datepicker-toggle matIconSuffix [for]="pickerFin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFin></mat-datepicker>
+      <mat-error *ngIf="form.get('fechafinSuscripcion')?.hasError('required')">
+        La fecha de fin es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="usuario">
+        <mat-option *ngFor="let u of listaUsuarios" [value]="u.id_usuario">
+          {{u.nombre}} {{u.apellidos}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+        El usuario es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <br><br>
+
+    <button mat-raised-button color="primary" type="submit">Aceptar</button>
+
+  </form>
+</div>
