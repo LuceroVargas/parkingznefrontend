@@ -54,7 +54,8 @@ export const routes: Routes = [
       },
       {
         path:'edicionesUsuario/:id',component:InsertareditarusuarioComponent
-      }
+      },
+     
     ]
 
   },
