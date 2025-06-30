@@ -12,7 +12,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-listarusuario',
-  imports: [MatTableModule, CommonModule, MatButtonModule, MatIconModule, RouterModule,MatPaginator, MatFormFieldModule],
+  imports: [MatTableModule, 
+    CommonModule, 
+    MatButtonModule, 
+    MatIconModule, 
+    RouterModule, MatPaginator, MatFormFieldModule],
   templateUrl: './listarusuario.component.html',
   styleUrl: './listarusuario.component.css'
 })
@@ -23,7 +27,8 @@ export class ListarusuarioComponent implements OnInit, AfterViewInit {
   form:FormGroup
   totalUsuarios: number = 0;
 
-  constructor(private uS: UsuarioService, private fb:FormBuilder) {this.form=fb.group({
+  constructor(private uS: UsuarioService, private fb:FormBuilder) {
+    this.form=fb.group({
     }) }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

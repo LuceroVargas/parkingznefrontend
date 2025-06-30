@@ -6,6 +6,8 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { InsertareditarusuarioComponent } from './components/usuario/insertareditarusuario/insertareditarusuario.component';
 import { SuscripcionComponent } from './components/suscripcion/suscripcion.component';
 import { InsertareditarsuscripcionComponent } from './components/suscripcion/insertareditarsuscripcion/insertareditarsuscripcion.component';
+import { RolComponent } from './components/rol/rol.component';
+import { InsertareditarrolComponent } from './components/rol/insertareditarrol/insertareditarrol.component';
 
 export const routes: Routes = [
   {
@@ -35,9 +37,7 @@ export const routes: Routes = [
       {
         path:'edicionesUsuario/:id',component:InsertareditarusuarioComponent
       },
-     
     ]
-
   },
   {
     path:'suscripciones',component:SuscripcionComponent,
@@ -51,5 +51,16 @@ export const routes: Routes = [
      
     ]
 
-  }
+  },
+    {
+    path:'roles',component:RolComponent,
+    children:[
+      {
+        path:'formularioRol',component:InsertareditarrolComponent
+      },
+      {
+        path:'edicionesRol/:id',component:InsertareditarrolComponent
+      },
+    ]
+  },
 ];

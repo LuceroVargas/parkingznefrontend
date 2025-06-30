@@ -17,9 +17,10 @@ export class UsuarioService {
   }
 
   insertar(u: Usuario) {
-      return this.http.post(this.url, u)
-    }
-  
+  return this.http.post(this.url, u, { responseType: 'text' });
+  }
+
+
     setList(listaNueva: Usuario[]) {
       this.listaCambio.next(listaNueva)
     }
@@ -31,9 +32,12 @@ export class UsuarioService {
       return this.http.get<Usuario>(`${this.url}/${id}`)
     }
   
-    update(u: Usuario) {
-      return this.http.put(this.url, u)
+     update(us: Usuario) {
+      return this.http.put(this.url, us)
     }
+
+
+  
   
     eliminar(id:number) {
       return this.http.delete(`${this.url}/${id}`)

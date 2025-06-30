@@ -20,6 +20,13 @@
     </button>
   </div>
 
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuRol" class="btn-rojo">
+      <mat-icon>computer</mat-icon>
+      Rol
+    </button>
+  </div>
+
 </mat-toolbar>
 
 <mat-menu #menuTipoNotificacion="matMenu">
@@ -37,5 +44,9 @@
 <mat-menu #menuSuscripcion="matMenu">
   <button mat-menu-item routerLink="/suscripciones">Listar</button>
   <button mat-menu-item routerLink="/suscripciones/formularioSuscripcion">Registrar</button>
-  <button mat-menu-item routerLink="/suscripciones/busquedasid">Buscar por id</button>
+</mat-menu>
+
+<mat-menu #menuRol="matMenu">
+  <button mat-menu-item routerLink="/roles">Listar</button>
+  <button mat-menu-item routerLink="/roles/formularioRoles">Registrar</button>
 </mat-menu>

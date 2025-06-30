@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from '../../../models/usuario';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -32,7 +33,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   styleUrl: './insertareditarsuscripcion.component.css'
 })
 export class InsertareditarsuscripcionComponent implements OnInit {
-
+  private _snackBar = inject(MatSnackBar);
   form: FormGroup = new FormGroup({})
   suscri: Suscripcion = new Suscripcion()
   status:boolean=true
@@ -42,6 +43,13 @@ export class InsertareditarsuscripcionComponent implements OnInit {
   id: number = 0
   edicion: boolean = false
 
+  hoy = new Date();
+  maxFin = new Date();
+  
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     private sS: SuscripcionService,
@@ -49,15 +57,20 @@ export class InsertareditarsuscripcionComponent implements OnInit {
     private uS:UsuarioService
   ) { }
 
+
   ngOnInit(): void {
+
+    this.maxFin.setMonth(this.hoy.getMonth() + 1);
+
+
     this.form = this.formBuilder.group({
       codigoSuscripcion:[''],
       tipoSuscripcion: ['', Validators.required],
       estadoSuscripcion: ['', Validators.required],
       tipopagoSuscripcion: ['', Validators.required],
       renovacionSuscripcion: ['', Validators.required],
-      fechainicioSuscripcion: ['', Validators.required],
-      fechafinSuscripcion: ['', Validators.required],
+      fechainicioSuscripcion: [this.hoy, Validators.required],
+      fechafinSuscripcion: [this.maxFin, Validators.required],
       usuario: ['', Validators.required]
     })
     this.uS.list().subscribe(data=>{

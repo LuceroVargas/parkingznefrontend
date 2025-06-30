@@ -33,9 +33,7 @@
       <ng-container matColumnDef="c4">
         <th mat-header-cell *matHeaderCellDef> Eliminar </th>
         <td mat-cell *matCellDef="let element">
-          <button matButton
-            (click)="eliminar(element.idTipoNotificacion)"
-          >
+          <button matButton(click)="eliminar(element.idTipoNotificacion)">
           <mat-icon>delete_forever</mat-icon>
           </button>
         </td>
@@ -43,6 +41,13 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      
+
     </table>
+       <mat-paginator [pageSize]="10" [pageSizeOptions]="[4, 8, 10]" aria-label="Select page">
+        </mat-paginator>
+        <p *ngIf="!notResults">Total de Tipo de notificaciones: {{ totalTiponotificaciones }}</p>
+        <p *ngIf="notResults">No se encontraron resultados.</p> 
   </div>
 </div>

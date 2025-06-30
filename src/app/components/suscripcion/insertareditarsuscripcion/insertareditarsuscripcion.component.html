@@ -1,86 +1,76 @@
 <div class="container">
-  <div style="text-align: center;margin: 5%;">
+  <div style="text-align: center; margin: 5%;">
     <h1>REGISTRAR SUSCRIPCIÓN</h1>
   </div>
 
   <form [formGroup]="form" (ngSubmit)="aceptar()">
+    <div class="form-grid">
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Suscripción</mat-label>
-      <input matInput placeholder="Premium, Básica..." formControlName="tipoSuscripcion">
-      <mat-error *ngIf="form.get('tipoSuscripcion')?.hasError('required')">
-        El tipo de suscripción es obligatorio.
-      </mat-error>
+      <!-- Tipo de Suscripción -->
+      <mat-form-field appearance="fill">
+        <mat-label>Suscripción</mat-label>
+        <input matInput placeholder="Premium, Básica..." formControlName="tipoSuscripcion">
+        <mat-error *ngIf="form.get('tipoSuscripcion')?.hasError('required')">
+          El tipo de suscripción es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Estado -->
+      <mat-form-field appearance="fill">
+        <mat-label>Estado</mat-label>
+        <input matInput placeholder="Activo, Inactivo..." formControlName="estadoSuscripcion">
+        <mat-error *ngIf="form.get('estadoSuscripcion')?.hasError('required')">
+          El estado de suscripción es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Tipo de Pago -->
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo de Pago</mat-label>
+        <input matInput placeholder="Plin, Yape..." formControlName="tipopagoSuscripcion">
+        <mat-error *ngIf="form.get('tipopagoSuscripcion')?.hasError('required')">
+          El tipo de pago es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Renovación Automática -->
+      <div style="display: flex; flex-direction: column;">
+        <label style="margin-bottom: 0.5rem;">Renovación Automática</label>
+        <mat-radio-group aria-label="Renovación Automática" formControlName="renovacionSuscripcion" style="display: flex; gap: 1rem;">
+          <mat-radio-button [value]="true">Sí</mat-radio-button>
+          <mat-radio-button [value]="false">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Rango de Fechas</mat-label>
+      <mat-date-range-input [rangePicker]="picker" [min]="hoy" [max]="maxFin">
+        <input matStartDate formControlName="fechainicioSuscripcion" placeholder="Fecha de Inicio">
+        <input matEndDate formControlName="fechafinSuscripcion" placeholder="Fecha de Fin">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
 
-    <br>
 
-      <mat-form-field class="example-full-width">
-      <mat-label>Estado</mat-label>
-      <input matInput placeholder="Activo, Inactivo..." formControlName="estadoSuscripcion">
-      <mat-error *ngIf="form.get('tipopagoSuscripcion')?.hasError('required')">
-        El estado de suscripcion es obligatorio.
-      </mat-error>
-    </mat-form-field>
+      <!-- Usuario -->
+      <mat-form-field appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="usuario">
+          <mat-option *ngFor="let u of listaUsuarios" [value]="u.id_usuario">
+            {{ u.nombre }} {{ u.apellidos }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+          El usuario es obligatorio.
+        </mat-error>
+      </mat-form-field>
 
-    <br>
+    </div>
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Tipo de Pago</mat-label>
-      <input matInput placeholder="Plin, Yape..." formControlName="tipopagoSuscripcion">
-      <mat-error *ngIf="form.get('tipopagoSuscripcion')?.hasError('required')">
-        El tipo de pago es obligatorio.
-      </mat-error>
-    </mat-form-field>
-
-    <br>
-
-    <mat-radio-group aria-label="Renovación Automática" formControlName="renovacionSuscripcion">
-      <mat-radio-button [value]="true">Sí</mat-radio-button>
-      <mat-radio-button [value]="false">No</mat-radio-button>
-    </mat-radio-group>
-
-    <br><br>
-
-    <mat-form-field>
-      <mat-label>Fecha Inicio</mat-label>
-      <input matInput [matDatepicker]="pickerInicio" formControlName="fechainicioSuscripcion">
-      <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
-      <mat-datepicker #pickerInicio></mat-datepicker>
-      <mat-error *ngIf="form.get('fechainicioSuscripcion')?.hasError('required')">
-        La fecha de inicio es obligatoria.
-      </mat-error>
-    </mat-form-field>
-
-    <br>
-
-    <mat-form-field>
-      <mat-label>Fecha Fin</mat-label>
-      <input matInput [matDatepicker]="pickerFin" formControlName="fechafinSuscripcion">
-      <mat-datepicker-toggle matIconSuffix [for]="pickerFin"></mat-datepicker-toggle>
-      <mat-datepicker #pickerFin></mat-datepicker>
-      <mat-error *ngIf="form.get('fechafinSuscripcion')?.hasError('required')">
-        La fecha de fin es obligatoria.
-      </mat-error>
-    </mat-form-field>
-
-    <br>
-
-    <mat-form-field>
-      <mat-label>Usuario</mat-label>
-      <mat-select formControlName="usuario">
-        <mat-option *ngFor="let u of listaUsuarios" [value]="u.id_usuario">
-          {{u.nombre}} {{u.apellidos}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.get('usuario')?.hasError('required')">
-        El usuario es obligatorio.
-      </mat-error>
-    </mat-form-field>
-
-    <br><br>
-
-    <button mat-raised-button color="primary" type="submit">Aceptar</button>
-
+    <!-- Botón Aceptar -->
+    <div style="margin-top: 2rem;">
+      <button mat-raised-button color="primary" type="submit">Aceptar</button>
+    </div>
   </form>
 </div>
