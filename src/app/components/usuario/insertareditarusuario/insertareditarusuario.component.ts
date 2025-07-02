@@ -54,7 +54,7 @@ export class InsertareditarusuarioComponent implements OnInit {
 
   markerPosition: google.maps.LatLngLiteral | null = null;
 
-      onMapClick(event: google.maps.MapMouseEvent) {
+  onMapClick(event: google.maps.MapMouseEvent) {
     if (event.latLng) {
       const lat = event.latLng.lat();
       const lng = event.latLng.lng();

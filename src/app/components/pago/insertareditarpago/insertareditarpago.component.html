@@ -50,13 +50,13 @@
 
 
       <mat-form-field appearance="fill">
-        <mat-label>Usuario</mat-label>
-        <mat-select formControlName="usuario">
-          <mat-option *ngFor="let u of listaUsuarios" [value]="u.id_usuario">
-            {{ u.nombre }} {{ u.apellidos }}
+        <mat-label>Suscripcione </mat-label>
+        <mat-select formControlName="suscripcion">
+          <mat-option *ngFor="let s of listaSuscripciones" [value]="s.idSuscripcion">
+         {{ s.TipoSuscripcion }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+        <mat-error *ngIf="form.get('suscripcion')?.hasError('required')">
           El usuario es obligatorio.
         </mat-error>
       </mat-form-field>

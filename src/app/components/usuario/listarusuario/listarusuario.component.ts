@@ -31,6 +31,8 @@ export class ListarusuarioComponent implements OnInit, AfterViewInit {
     this.form=fb.group({
     }) }
 
+  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   ngAfterViewInit(): void {
     setTimeout(() => {

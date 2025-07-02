@@ -1,1 +1,42 @@
-<p>insertareditarrol works!</p>
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>REGISTRAR ROL</h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="aceptar()">
+    <div class="form-grid">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo de rol</mat-label>
+        <input matInput placeholder="----" formControlName="tipoRol">
+        <mat-error *ngIf="form.get('tiporRol')?.hasError('required')">
+          El tipo de rol es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+
+    
+
+   
+
+      <mat-form-field appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="usuario">
+          <mat-option *ngFor="let u of listaUsuarios" [value]="u.id_usuario">
+            {{ u.nombre }} {{ u.apellidos }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+          El usuario es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <button mat-raised-button color="primary" type="submit">Aceptar</button>
+      <button mat-raised-button color="warn" routerLink="/usuarios">Cancelar</button>
+
+    </div>
+  </form>
+</div>

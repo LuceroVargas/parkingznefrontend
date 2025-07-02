@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
 import { Subject } from 'rxjs';
 import { Rol } from '../models/rol';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 const base_url = environment.base
 
 @Injectable({
@@ -20,7 +20,7 @@ export class RolService {
   }
 
   insert(r: Rol) {
-    return this.http.post(this.url, r)
+    return this.http.post(this.url, r, { responseType: 'text' });
   }
   getList() {
     return this.listaCambio.asObservable()
@@ -39,5 +39,5 @@ export class RolService {
   
   eliminar(id:number) {
     return this.http.delete(`${this.url}/${id}`)
-}
+  }
 }

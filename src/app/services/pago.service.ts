@@ -2,41 +2,43 @@ import { Injectable } from '@angular/core';
 import { Suscripcion } from '../models/suscripcion';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Pago } from '../models/pago';
 import { environment } from '../../environments/environment';
 
 const base_url = environment.base
-
+ 
 @Injectable({
   providedIn: 'root'
 })
+export class PagoService {
 
-export class SuscripcionService {
-  private url = `${base_url}/suscripciones`
-  private listaCambio = new Subject<Suscripcion[]>()
 
+  private url = `${base_url}/roles`
+  private listaCambio = new Subject<Pago[]>()
+  
   constructor(private http: HttpClient) { }
 
   list() {
-    return this.http.get<Suscripcion[]>(this.url)
+    return this.http.get<Pago[]>(this.url)
   }
 
-  insert(s: Suscripcion) {
-    return this.http.post(this.url, s, { responseType: 'text' });
+  insert(p: Pago) {
+    return this.http.post(this.url, p, { responseType: 'text' });
   }
-  
   getList() {
     return this.listaCambio.asObservable()
   }
-  setList(listaNueva: Suscripcion[]) {
-    this.listaCambio.next(listaNueva)
-  }
+
+  setList(listaNueva: Pago[]) {
+      this.listaCambio.next(listaNueva)
+    }
 
   listId(id: number) {
-    return this.http.get<Suscripcion>(`${this.url}/${id}`)
+    return this.http.get<Pago>(`${this.url}/${id}`)
   }
 
-  update(s: Suscripcion) {
-      return this.http.put(this.url, s)
+  update(p: Pago) {
+      return this.http.put(this.url, p)
   }
   
   eliminar(id:number) {

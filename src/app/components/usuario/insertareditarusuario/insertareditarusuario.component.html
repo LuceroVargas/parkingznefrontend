@@ -7,7 +7,6 @@
     <form [formGroup]="form" (ngSubmit)="aceptar()">
       <div class="form-grid">
 
-        <!-- Id solo en modo edición -->
         <mat-form-field *ngIf="edicion" appearance="outline">
           <mat-label>Id</mat-label>
           <input matInput formControlName="codigoUsuario">
@@ -16,7 +15,6 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Nombre -->
         <mat-form-field appearance="outline">
           <mat-label>Nombre</mat-label>
           <input matInput formControlName="nombreUsuario" placeholder="Ingrese nombre">
@@ -25,7 +23,6 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Apellidos -->
         <mat-form-field appearance="outline">
           <mat-label>Apellidos</mat-label>
           <input matInput formControlName="apellidosUsuario" placeholder="Ingrese apellidos">
@@ -34,7 +31,6 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Fecha de Nacimiento -->
         <mat-form-field appearance="outline">
           <mat-label>Fecha de Nacimiento</mat-label>
           <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="fechaNacimientoUsuario">
@@ -58,7 +54,6 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Placa -->
         <mat-form-field appearance="outline">
           <mat-label>Placa</mat-label>
           <input matInput formControlName="placaAutoUsuario" placeholder="Ej: ABC123 o D4A345" maxlength="6">
@@ -71,7 +66,6 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Teléfono -->
         <mat-form-field appearance="fill">
           <mat-label>Teléfono</mat-label>
           <span matPrefix>+51&nbsp;</span>
@@ -85,7 +79,6 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Username -->
         <mat-form-field appearance="fill">
           <mat-label>Username</mat-label>
           <input matInput formControlName="usernameUsuario" placeholder="Ingrese usuario">
@@ -137,8 +130,6 @@
         </mat-form-field>
       </div>
 
-
-        <!-- Estado -->
         <div style="display: flex; flex-direction: column; justify-content: flex-start;">
           <label style="margin-bottom: 0.5rem;">Estado</label>
           <mat-radio-group aria-label="Enabled" formControlName="enabledUsuario" style="display: flex; gap: 1rem;">
@@ -149,7 +140,6 @@
 
       </div>
 
-      <!-- Botones -->
       <div style="margin-top: 2rem;">
         <button mat-raised-button color="primary" type="submit">Aceptar</button>
         <button mat-raised-button color="warn" routerLink="/usuarios">Cancelar</button>

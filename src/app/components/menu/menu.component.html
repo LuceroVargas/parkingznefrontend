@@ -1,10 +1,4 @@
 <mat-toolbar class="custom-toolbar">
-  <div>
-    <button mat-button [matMenuTriggerFor]="menuTipoNotificacion" class="btn-rojo">
-      <mat-icon>computer</mat-icon>
-      Tipo Notificaciones
-    </button>
-  </div>
 
   <div>
     <button mat-button [matMenuTriggerFor]="menuUsuario" class="btn-rojo">
@@ -29,16 +23,10 @@
 
 </mat-toolbar>
 
-<mat-menu #menuTipoNotificacion="matMenu">
-  <button mat-menu-item routerLink="/tiponotificaciones">Listar</button>
-  <button mat-menu-item routerLink="/tiponotificaciones/formulario">Registrar</button>
-  <button mat-menu-item routerLink="/tiponotificaciones/busquedasid">Buscar por id</button>
-</mat-menu>
-
 <mat-menu #menuUsuario="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar</button>
   <button mat-menu-item routerLink="/usuarios/formularioUsuario">Registrar</button>
-  <button mat-menu-item routerLink="/usuarios/busquedasid">Buscar por id</button>
+  <button mat-menu-item routerLink="/usuarios/busquedasPlaca">Buscar por Placa</button>
 </mat-menu>
 
 <mat-menu #menuSuscripcion="matMenu">
