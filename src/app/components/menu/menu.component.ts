@@ -10,8 +10,7 @@ import { RouterLink } from '@angular/router';
   imports: [MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    MatMenuModule,
-    RouterLink],
+    MatMenuModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
