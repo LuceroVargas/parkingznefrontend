@@ -1,0 +1,100 @@
+<div class="container">
+    <div style="text-align: center;margin: 5%;">
+        <h1>REGISTRAR NOTIFICACIÓN</h1>
+    </div>
+    <div style="text-align: center;">
+        <form [formGroup]="form" (ngSubmit)="aceptar()">
+            <div class="form-grid">
+                <mat-form-field *ngIf="edicion">
+                    <mat-label>Id</mat-label>
+                    <input matInput placeholder="" formControlName="">
+                    <mat-error *ngIf="form.get('codigonot')?.hasError('required')">
+                        Ingresa el codigo de la notificacion.
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field>
+                    <mat-label>Mensaje</mat-label>
+                    <input matInput placeholder="Ingrese un mensaje" formControlName="mensaje">
+                    <mat-error *ngIf="form.get('mensajeNotificacion')?.hasError('required')">
+                        El mensaje de notificacion es obligatorio.
+                    </mat-error>
+                </mat-form-field>
+        
+            
+                <br>
+        
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha de Emision</mat-label>
+                    <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="fechaEmision">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="form.get('fechadeEmision')?.hasError('required')">
+                        La fecha de emision es obligatoria.
+                    </mat-error>
+                </mat-form-field>
+        
+                 <mat-form-field appearance="outline">
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="fechaProgramada">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="form.get('fechaProgramada')?.hasError('required')">
+                        La fecha de programada es obligatoria.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <input matInput placeholder="Ingrese su estado" formControlName="estadoNotificacion">
+                    <mat-error *ngIf="form.get('estadoNotificacion')?.hasError('required')">
+                        El estado de la Notificacion es obligatorio.
+                    </mat-error>
+                </mat-form-field>
+        
+
+              <mat-form-field>
+                <mat-label>Usuario</mat-label>
+                <mat-select formControlName="usuario">
+                  <mat-option *ngFor="let u of listaUsuarios" [value]="u.id_usuario">
+                    {{u.nombre}} {{u.apellidos}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+                  El usuario es obligatorio.
+                </mat-error>
+              </mat-form-field>
+
+              <br><br>
+
+
+               <mat-form-field>
+                <mat-label>Tipo Notificacion</mat-label>
+                <mat-select formControlName="tiponotificacion">
+                  <mat-option *ngFor="let Tpn of listatipoNotificacion" [value]="Tpn.idTipoNotificacion">
+                    {{Tpn.idTipoNotificacion}} {{Tpn.descripcion}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('tipoNotificacion')?.hasError('required')">
+                  El Tipo de Notificacion es obligatorio.
+                </mat-error>
+              </mat-form-field>
+
+              <br><br>
+
+               <mat-form-field *ngIf="edicion">
+               <mat-label>ID</mat-label>
+               <input matInput formControlName="codigo">
+               </mat-form-field>
+
+            </div>
+        
+            <button mat-raised-button color="primary">Aceptar</button>
+            <button mat-raised-button color="warn" routerLink="/notificacion">
+                Cancelar
+                </button>
+        </form>
+    </div>
+</div>

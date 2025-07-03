@@ -16,7 +16,7 @@ import { Empresa } from '../../../models/empresa';
 export class ListarempresaComponent implements OnInit {
 
 dataSource: MatTableDataSource<Empresa> = new MatTableDataSource()
-  displayedColumns: string[] = ['c1', 'c2','c3', 'c4','c5']
+  displayedColumns: string[] = ['c1', 'c2','c3', 'c4','c5','c6','c7']
   constructor(private tpS: EmpresaService) { }
 
   ngOnInit(): void {

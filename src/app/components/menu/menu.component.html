@@ -27,6 +27,12 @@
   </button>
 </div>
 
+ <div>
+    <button mat-button [matMenuTriggerFor]="menuNotificacion" class="btn-rojo">
+      <mat-icon>notifications</mat-icon>
+      Notificaciones
+    </button>
+  </div>
 
 </mat-toolbar>
 
@@ -49,8 +55,17 @@
 </mat-menu>
 
 <mat-menu #menuEmpresa="matMenu">
-  <button mat-menu-item routerLink="/empresas">Listar</button>
-  <button mat-menu-item routerLink="/empresa/listar"> Listar</button>  
-  <button mat-menu-item routerLink="/empresas/insertar"> Registrar Empresa</button>  
-   <button mat-menu-item routerLink="/empresas/busquedasempresa">Buscar por id</button>  
+  <button mat-menu-item routerLink="/empresas/listar"> Listar</button>  
+  <button mat-menu-item routerLink="/empresas/insertar"> Registrar </button>  
+  <button mat-menu-item routerLink="/empresas/buscarempresaporid">Buscar por id</button>  
+  <button mat-menu-item routerLink="/empresas/modificar">Modificar</button>
+  <button mat-menu-item routerLink="/empresas/eliminar">Eliminar</button>
+</mat-menu>
+
+<mat-menu #menuNotificacion="matMenu">
+  <button mat-menu-item routerLink="/notificacion/listar">Listar</button>
+  <button mat-menu-item routerLink="/notificacion/registrar">Registrar</button>
+  <button mat-menu-item routerLink="/notificacion/buscarporid">Buscar por id</button>
+  <button mat-menu-item routerLink="/notificacion/modificar">Modificar</button>
+  <button mat-menu-item routerLink="/notificacion/eliminar">Eliminar</button>
 </mat-menu>

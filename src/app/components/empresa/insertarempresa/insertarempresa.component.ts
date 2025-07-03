@@ -10,6 +10,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { Usuario } from '../../../models/usuario';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-insertarempresa',
@@ -31,16 +33,18 @@ export class InsertarempresaComponent {
 
   form: FormGroup = new FormGroup({})
   empresa: Empresa = new Empresa()
-
+  listaUsuarios:Usuario[]=[]
   
   id: number = 0
   edicion: boolean = false
 
 
-  constructor(private eS: EmpresaService,
+  constructor(
+    private eS: EmpresaService,
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private uS:UsuarioService
   ) { }
 
   ngOnInit(): void {
@@ -52,9 +56,16 @@ export class InsertarempresaComponent {
         usuario: ['', Validators.required]
     });
     
-    // this.uS.list().subscribe(data=>{
-     //this.listaUsuarios=data
-    //})
+        this.uS.list().subscribe(data=>{
+        this.listaUsuarios=data
+        })
+
+        this.route.params.subscribe((params: Params) => {
+        this.id = params['id'];
+        this.edicion = this.id != null;
+        this.init();
+});
+
   }
 
   aceptar() {
@@ -63,7 +74,7 @@ export class InsertarempresaComponent {
         this.empresa.nombreEmpresa = this.form.value.nombre;
         this.empresa.direccionEmpresa = this.form.value.direccion;
         this.empresa.tipoEmpresa = this.form.value.tipoEmpresa;
-       // this.empresa.usuario = { id_usuario: this.form.value.usuario };
+        this.empresa.usuario.id_usuario = this.form.value.usuario
 
       if (this.edicion) {
         //actualizar
@@ -80,7 +91,7 @@ export class InsertarempresaComponent {
           })
         })
       }
-      this.router.navigate(['Empresas'])
+      this.router.navigate(['/empresas'])
     }
   }
   init() {
@@ -91,7 +102,7 @@ export class InsertarempresaComponent {
           nombre: new FormControl(data.nombreEmpresa),
           direccion: new FormControl(data.direccionEmpresa),
           tipoEmpresa: new FormControl(data.tipoEmpresa),
-        //  usuario: new FormControl(data.usuario.id_usuario),
+          usuario: new FormControl(data.usuario.id_usuario),
         })
       })
 

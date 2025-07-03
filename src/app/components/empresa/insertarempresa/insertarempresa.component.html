@@ -1,6 +1,6 @@
 <div class="container">
   <div style="text-align: center;margin: 5%;">
-    <h1>REGISTRAR</h1>
+    <h1>REGISTRAR EMPRESA</h1>
   </div>
     <div style="text-align: center;">
     <form [formGroup]="form" (submit)="aceptar()">
@@ -15,8 +15,8 @@
   <br>
 
   <mat-form-field>
-    <mat-label>Descripción</mat-label>
-    <input matInput formControlName="nombre">
+    <mat-label>Nombre de Empresa</mat-label>
+    <input matInput formControlName="nombreEmpresa">
     <mat-error *ngIf="form.get('nombre')?.hasError('required')">
       Ingresa tu nombre!!
     </mat-error>
@@ -42,19 +42,26 @@
 
    <br>
 
-     <!--  <mat-form-field>
+      <mat-form-field>
       <mat-label>Usuario</mat-label>
       <mat-select formControlName="usuario">
        <mat-option *ngFor="let u of listaUsuarios" [value]="u.id_usuario"> 
-          {{u.nombre}} {{u.apellidos}}
+          {{u.nombre}} {{u.apellidos}} {{u.correo}} {{u.telefono}}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.get('usuario')?.hasError('required')">
         El usuario es obligatorio.
       </mat-error>
-    </mat-form-field> -->
+    </mat-form-field> 
 
     <br><br>
+
+     <mat-form-field *ngIf="edicion">
+     <mat-label>ID</mat-label>
+     <input matInput formControlName="codigo">
+     </mat-form-field>
+
+    
 
   <div class="botones">
     <button mat-raised-button color="primary">Aceptar</button>

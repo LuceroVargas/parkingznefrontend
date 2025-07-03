@@ -12,6 +12,9 @@ import { InsertareditarsuscripcionComponent } from './components/suscripcion/ins
 import { SuscripcionComponent } from './components/suscripcion/suscripcion.component';
 import { ListarsuscripcionComponent } from './components/suscripcion/listarsuscripcion/listarsuscripcion.component';
 import { ListarusuarioComponent } from './components/usuario/listarusuario/listarusuario.component';
+import { NotificacionComponent } from './components/notificacion/notificacion.component';
+import { ListarnotificacionComponent } from './components/notificacion/listarnotificacion/listarnotificacion.component';
+import { RegistrarnotificacionComponent } from './components/notificacion/registrarnotificacion/registrarnotificacion.component';
 
 export const routes: Routes = [
   {
@@ -39,7 +42,9 @@ export const routes: Routes = [
   children: [
     { path: 'listar', component: ListarempresaComponent },
     { path: 'insertar', component: InsertarempresaComponent},
-    { path:'busquedasempresa',component:BuscarempresaComponent}
+    { path:'buscarempresaporid',component:BuscarempresaComponent},
+    { path:'modificar',component:InsertarempresaComponent},
+    { path:'eliminar',component:ListarnotificacionComponent }
   ]
 },
 
@@ -73,7 +78,33 @@ export const routes: Routes = [
      
     ]
 
-  }
+  },
+
+
+  
+   {
+    path:'notificacion',component:NotificacionComponent,
+    children:[
+
+      { 
+        path: 'listar', component: ListarnotificacionComponent },
+      {
+        path:'registrar',component:RegistrarnotificacionComponent
+      },
+      
+       {
+        path:'buscarporid',component:RegistrarnotificacionComponent
+      },
+      {
+        path:'modificar',component:RegistrarnotificacionComponent
+      },
+
+     {
+        path:'eliminar',component:ListarnotificacionComponent
+      },
+    ]
+
+  },
 
 
 

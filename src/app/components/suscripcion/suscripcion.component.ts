@@ -11,3 +11,8 @@ import { ListarsuscripcionComponent } from './listarsuscripcion/listarsuscripcio
 export class SuscripcionComponent {
   constructor(public route: ActivatedRoute) { }
 }
+
+
+
+
+
