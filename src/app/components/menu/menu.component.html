@@ -36,6 +36,13 @@
 
 </mat-toolbar>
 
+<div>
+  <button mat-button [matMenuTriggerFor]="menuReportes" class="btn-rojo">
+    <mat-icon>bar_chart</mat-icon>
+    Reportes
+  </button>
+</div>
+
 <mat-menu #menuTipoNotificacion="matMenu">
   <button mat-menu-item routerLink="/tiponotificaciones">Listar</button>
   <button mat-menu-item routerLink="/tiponotificaciones/formulario">Registrar</button>
@@ -68,4 +75,15 @@
   <button mat-menu-item routerLink="/notificacion/buscarporid">Buscar por id</button>
   <button mat-menu-item routerLink="/notificacion/modificar">Modificar</button>
   <button mat-menu-item routerLink="/notificacion/eliminar">Eliminar</button>
+</mat-menu>
+
+<mat-menu #menuReportes="matMenu">
+  <button mat-menu-item routerLink="/reportenotificacionusuario">
+    <mat-icon>notifications</mat-icon>
+    Notificaciones por Usuario
+  </button>
+  <button mat-menu-item routerLink="/reporteempresamasreservada">
+    <mat-icon>business</mat-icon>
+    Empresa más Reservada
+  </button>
 </mat-menu>
